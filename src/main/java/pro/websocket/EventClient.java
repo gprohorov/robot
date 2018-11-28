@@ -10,6 +10,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 
 import java.io.IOException;
+import java.util.concurrent.Delayed;
 
 public class EventClient {
     public static void main(String[] args) {
@@ -25,10 +26,15 @@ public class EventClient {
             ListenableFuture<WebSocketSession> fut = client.doHandshake(socket, uri);
             // Wait for Connect
             session = fut.get();
+
             // Send a message
+            for (int i = 0; i <5 ; i++) {
             session.sendMessage(new TextMessage("Hello"));
+            session = fut.get();
+
+        }
             // Close session
-            session.close();
+          session.close();
 
         } catch (Throwable t) {
             t.printStackTrace(System.err);
