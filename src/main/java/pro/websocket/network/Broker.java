@@ -1,9 +1,10 @@
 package pro.websocket.network;
 
 
+import javax.validation.constraints.NotNull;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
+
 import org.springframework.web.socket.WebSocketSession;
 import pro.websocket.message.Message;
 import pro.websocket.message.Topic;
