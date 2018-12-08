@@ -16,7 +16,8 @@ public class EventClient {
     public static void main(String[] args) {
 
         // connection url
-        String uri = "ws://localhost:8181/";//"ws://localhost:8090/events";//"ws://localhost:8181/"
+         String uri = "ws://localhost:8181/";
+      //  String uri = "ws://localhost:8090/events";
 
         StandardWebSocketClient client = new StandardWebSocketClient();
         WebSocketSession session = null;

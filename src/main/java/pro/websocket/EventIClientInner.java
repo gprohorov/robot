@@ -12,10 +12,10 @@ import pro.websocket.EventHandler;
 
 import java.io.IOException;
 
-public class EventRobotClient {
+public class EventIClientInner {
     public static void main(String[] args) {
         // connection url
-        String uri = "ws://localhost:8090/robot";
+        String uri = "ws://localhost:8090/events";
 
         StandardWebSocketClient client = new StandardWebSocketClient();
         WebSocketSession session = null;
