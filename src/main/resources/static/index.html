@@ -24,10 +24,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!--
+<script src="https://raw.githubusercontent.com/sockjs/sockjs-client/master/dist/sockjs.min.js"></script>
 We are using SockJS lib
 https://github.com/sockjs/sockjs-client
+
 -->
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
 
 
 <script>
@@ -35,6 +37,7 @@ https://github.com/sockjs/sockjs-client
     var port = 8090;
     var path = 'events';
     var sock;
+
     function say() {
         var msg = $('#msgform').serialize();
         var name = $('#nameform').serialize();
@@ -50,20 +53,20 @@ https://github.com/sockjs/sockjs-client
     }
     function login() {
         var name = $('#nameform').serialize();
-//        var settings = {
-//            "method": "POST",
-//            "crossDomain": true,
-//            "url": "http://" + host + ":" + port + "/chat/login",
-//            "data": name
-//        };
-//
-//        $.ajax(settings).done(function (response) {
+       var settings = {
+            "method": "POST",
+            "crossDomain": true,
+            "url": "http://" + host + ":" + port +"/" + path,
+            "data": name
+        };
+
+        $.ajax(settings).done(function (response) {
         initSock();
-//        }).fail(function (jqXHR, textStatus) {
-//            alert(jqXHR.status + " " + jqXHR.statusText + ". " + jqXHR.responseText);
-//            console.log(jqXHR.status + " " + jqXHR.statusText + ". " + jqXHR.responseText);
-//        });
-//
+       }).fail(function (jqXHR, textStatus) {
+           alert(jqXHR.status + " " + jqXHR.statusText + ". " + jqXHR.responseText);
+           console.log(jqXHR.status + " " + jqXHR.statusText + ". " + jqXHR.responseText);
+        });
+
     }
     function initSock() {
         sock = new SockJS('http://' + host + ':' + port + '/' + path);
